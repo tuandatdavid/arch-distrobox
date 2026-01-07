@@ -12,7 +12,7 @@ COPY ../packages/arch.packages /
 
 
 # Run the setup scripts
-RUN chmod +x arch.sh distrobox-shims.sh && /boxkit.sh
+RUN chmod +x arch.sh distrobox-shims.sh && /arch.sh
 RUN rm /arch.sh /distrobox-shims.sh /arch.packages
 
 # Pacman Initialization
