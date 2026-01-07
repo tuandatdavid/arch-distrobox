@@ -48,28 +48,7 @@ RUN git clone https://aur.archlinux.org/paru-bin.git --single-branch && \
 #        aur/placeholder \
 #        --noconfirm
 
-# Install amdgpu-pro, remove other drivers
-USER build
-WORKDIR /home/build
-RUN paru -R \
-        libglvnd \
-        vulkan-intel \
-        vulkan-radeon \
-        mesa \
-        --noconfirm && \
-    paru -Syu \
-        amdgpu-pro-oglp \
-        lib32-amdgpu-pro-oglp \
-        vulkan-amdgpu-pro \
-        lib32-vulkan-amdgpu-pro \
-        amf-amdgpu-pro \
-        --noconfirm && \
-    sudo rm -rf /var/cache/pacman/pkg/* && \
-    rm -rf /home/build/.cache/*
-
 USER root
-WORKDIR /
-
       
 # Cleanup
 RUN sed -i 's@#en_US.UTF-8@en_US.UTF-8@g' /etc/locale.gen && \
