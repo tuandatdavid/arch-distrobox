@@ -10,11 +10,6 @@ COPY ../scripts/arch.sh /
 COPY ../scripts/distrobox-shims.sh /
 COPY ../packages/arch.packages /
 
-
-# Run the setup scripts
-RUN chmod +x arch.sh distrobox-shims.sh && /arch.sh
-RUN rm /arch.sh /distrobox-shims.sh /arch.packages
-
 # Pacman Initialization
 # Create build user
 RUN sed -i 's/#Color/Color/g' /etc/pacman.conf && \
@@ -34,6 +29,11 @@ RUN git clone https://github.com/89luca89/distrobox.git --single-branch /tmp/dis
     wget https://github.com/1player/host-spawn/releases/download/$(cat /tmp/distrobox/distrobox-host-exec | grep host_spawn_version= | cut -d "\"" -f 2)/host-spawn-$(uname -m) -O /usr/bin/host-spawn && \
     chmod +x /usr/bin/host-spawn && \
     rm -drf /tmp/distrobox
+
+# Run the setup scripts
+RUN chmod +x arch.sh distrobox-shims.sh && /arch.sh
+RUN rm /arch.sh /distrobox-shims.sh /arch.packages
+
 
 # Add paru and install AUR packages
 USER build
