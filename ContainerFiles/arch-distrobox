@@ -8,12 +8,12 @@ LABEL com.github.containers.toolbox="true" \
 # Copy the setup scripts and package list
 COPY ../scripts/arch.sh /
 COPY ../scripts/distrobox-shims.sh /
-COPY ../packages/boxkit.packages /
+COPY ../packages/arch.packages /
 
 
 # Run the setup scripts
 RUN chmod +x arch.sh distrobox-shims.sh && /boxkit.sh
-RUN rm /boxkit.sh /distrobox-shims.sh /boxkit.packages
+RUN rm /arch.sh /distrobox-shims.sh /arch.packages
 
 # Pacman Initialization
 # Create build user
