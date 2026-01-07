@@ -38,5 +38,7 @@ vulkan-intel
 vulkan-radeon
 wget
 words
-xorg-xauth
-zip
+rocm-amd
+pipewire-alsa
+pulseaudio-libs
+python3-gobject
