@@ -20,7 +20,7 @@ RUN sed -i 's/#Color/Color/g' /etc/pacman.conf && \
     useradd -m --shell=/bin/bash build && usermod -L build && \
     echo "build ALL=(ALL) NOPASSWD: ALL" | tee -a /etc/sudoers && \
     echo "root ALL=(ALL) NOPASSWD: ALL" | tee -a /etc/sudoers
-    pacman -S --clean --clean
+RUN pacman -S --clean --clean
 
 # Distrobox Integration
 RUN git clone https://github.com/89luca89/distrobox.git --single-branch /tmp/distrobox && \
