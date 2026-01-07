@@ -6,7 +6,7 @@ LABEL com.github.containers.toolbox="true" \
       maintainer="jorge.castro@gmail.com"
 
 # Copy the setup scripts and package list
-COPY ../scripts/boxkit.sh /
+COPY ../scripts/arch.sh /
 COPY ../scripts/distrobox-shims.sh /
 COPY ../packages/boxkit.packages /
 
