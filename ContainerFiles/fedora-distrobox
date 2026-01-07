@@ -6,10 +6,10 @@ LABEL com.github.containers.toolbox="true" \
       maintainer="faeizmahrus@outlook.com"
 
 # Copy the setup scripts and package list
-COPY ../scripts/fedora-example.sh /
+COPY ../scripts/fedora.sh /
 COPY ../scripts/distrobox-shims.sh /
-COPY ../packages/fedora-example.packages /
+COPY ../packages/fedorapackages /
 
 # Run the setup scripts
-RUN chmod +x fedora-example.sh distrobox-shims.sh && /fedora-example.sh
-RUN rm /fedora-example.sh /distrobox-shims.sh /fedora-example.packages
+RUN chmod +x fedora.sh distrobox-shims.sh && /fedora.sh
+RUN rm /fedora.sh /distrobox-shims.sh /fedora.packages

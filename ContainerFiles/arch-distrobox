@@ -12,7 +12,7 @@ COPY ../packages/boxkit.packages /
 
 
 # Run the setup scripts
-RUN chmod +x boxkit.sh distrobox-shims.sh && /boxkit.sh
+RUN chmod +x arch.sh distrobox-shims.sh && /boxkit.sh
 RUN rm /boxkit.sh /distrobox-shims.sh /boxkit.packages
 
 # Pacman Initialization
@@ -46,6 +46,29 @@ RUN git clone https://aur.archlinux.org/paru-bin.git --single-branch && \
 #    paru -S \
 #        aur/placeholder \
 #        --noconfirm
+
+# Install amdgpu-pro, remove other drivers
+RUN useradd -m --shell=/bin/bash build && usermod -L build && \
+    echo "build ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+    echo "root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+USER build
+WORKDIR /home/build
+RUN paru -R \
+        libglvnd \
+        vulkan-intel \
+        vulkan-radeon \
+        mesa \
+        --noconfirm && \
+    paru -Syu \
+        amdgpu-pro-oglp \
+        lib32-amdgpu-pro-oglp \
+        vulkan-amdgpu-pro \
+        lib32-vulkan-amdgpu-pro \
+        amf-amdgpu-pro \
+        --noconfirm && \
+    sudo rm -rf /var/cache/pacman/pkg/* && \
+    rm -rf /home/build/.cache/*
 
 USER root
 WORKDIR /
