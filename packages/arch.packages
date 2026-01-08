@@ -34,11 +34,10 @@ unzip
 util-linux
 util-linux-libs
 vte-common
-vulkan-intel
 vulkan-radeon
 wget
 words
-rocm-amd
+opencl-amd
 pipewire-alsa
 pulseaudio-libs
 python3-gobject
