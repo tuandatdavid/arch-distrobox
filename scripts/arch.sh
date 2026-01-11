@@ -5,5 +5,5 @@
 
 # Update the container and install packages
 pacman -Syu --noconfirm
-grep -v '^#' ./boxkit.packages | xargs pacman -S --noconfirm
+grep -v '^#' ./arch.packages | xargs pacman -S --noconfirm
 rm -rf /var/cache/pacman/pkg/*
